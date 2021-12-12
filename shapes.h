@@ -239,12 +239,6 @@ inline void myCircle::draw() {
 
 inline bool myCircle::isInObj(GLfloat x, GLfloat y)
 {
-	cout << topLeft.getX() << " " << topLeft.getY() << endl;
-	cout << topRight.getX() << " " << topRight.getY() << endl;
-	cout << bottomLeft.getX() << " " << bottomLeft.getY() << endl;
-	cout << bottomRight.getX() << " " << bottomRight.getY() << endl;
-	cout << x << endl;
-	cout << y << endl;
 	if (x >= topLeft.getX() && x <= topRight.getX() && y <= topLeft.getY() && y >= bottomLeft.getY())
 		return true;
 	else return false;
@@ -353,7 +347,6 @@ void myTexts::draw() {
 	int stride = 0;
 
 	for (char c : chars) {
-		cout << c;
 		glRasterPos2i(this->bottomLeft.getX() + stride+2, this->bottomLeft.getY()+6);
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, c);
 		stride += 12;

@@ -129,7 +129,6 @@ void mouse(int button, int state, int x, int y) {
 		bool found = false;
 		for (auto o : objects) {
 			if (o->isInObj(x, height - y)) {
-				cout << "found object" << endl;
 				found = true;
 				deleteTarget = o;
 			}
@@ -237,7 +236,6 @@ void display() {
 		break;
 	}
 
-	cout << objects.size() << endl;
 	for (myShape* o : objects) {
 		if (o == deleteTarget) {
 			o->displayBorder(borderBoxID);
@@ -279,8 +277,6 @@ void keyboard(unsigned char key, int x, int y) {
 		}
 		if ((key == 13 && deleteTarget->getType()==6) || keyAccepting) {
 			for (myTexts* t : textObjs) {
-				bool result = deleteTarget == t;
-				cout << result << endl;
 				if (deleteTarget == t) {
 					if(!keyAccepting){
 						keyAccepting = true;
@@ -311,7 +307,6 @@ void init() {
 	glutAddSubMenu("Object", objSubmenu);
 	glutAddSubMenu("Fill Object", fillSubmenu);
 	glutAddSubMenu("Line Width", lineSubmenu);
-	glutAddMenuEntry("Eraser", 5);
 	glutAddMenuEntry("Set Color", 6);
 	glutAddMenuEntry("Exit", 7);
 

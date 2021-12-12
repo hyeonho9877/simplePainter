@@ -62,5 +62,5 @@ C:\Users\61906\Source\Repos\OpenGL\OpenGL\main.cpp(186,36): warning C4244: '인�
 C:\Users\61906\Source\Repos\OpenGL\OpenGL\main.cpp(187,27): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\61906\Source\Repos\OpenGL\OpenGL\main.cpp(187,17): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\61906\Source\Repos\OpenGL\OpenGL\main.cpp(300,14): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\61906\Source\Repos\OpenGL\OpenGL\main.cpp(377,14): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\61906\Source\Repos\OpenGL\OpenGL\main.cpp(376,14): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   OpenGL.vcxproj -> C:\Users\61906\Source\Repos\OpenGL\x64\Debug\OpenGL.exe
