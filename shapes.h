@@ -70,22 +70,22 @@ protected:
 void myShape::displayBorder(int listID) {
 	glColor3f(1.0, 0.0, 0.0);
 	glPushMatrix();
-	glTranslatef(topLeft.getX()-5, topLeft.getY(), 0);
+	glTranslatef(topLeft.getX() - 5, topLeft.getY(), 0);
 	glCallList(listID);
 	glPopMatrix();
-	
+
 	glPushMatrix();
 	glTranslatef(topRight.getX(), topRight.getY(), 0);
 	glCallList(listID);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(bottomLeft.getX()-5, bottomLeft.getY()-5, 0);
+	glTranslatef(bottomLeft.getX() - 5, bottomLeft.getY() - 5, 0);
 	glCallList(listID);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(bottomRight.getX(), bottomRight.getY()-5, 0);
+	glTranslatef(bottomRight.getX(), bottomRight.getY() - 5, 0);
 	glCallList(listID);
 	glPopMatrix();
 }
@@ -156,7 +156,7 @@ private:
 };
 
 inline void myTriangle::draw() {
-	
+
 	glColor3f(this->r, this->g, this->b);
 	if (this->fill) {
 		glBegin(GL_TRIANGLES);
@@ -175,9 +175,9 @@ inline void myTriangle::draw() {
 }
 
 inline bool myTriangle::isInObj(GLfloat x, GLfloat y) {
-	float alpha = ((bottomLeft.getY() - bottomRight.getY()) * (x - bottomRight.getX()) + (bottomRight.getX() - bottomLeft.getX()) * (y - bottomRight.getY())) / 
+	float alpha = ((bottomLeft.getY() - bottomRight.getY()) * (x - bottomRight.getX()) + (bottomRight.getX() - bottomLeft.getX()) * (y - bottomRight.getY())) /
 		((bottomLeft.getY() - bottomRight.getY()) * (middlePoint.getX() - bottomRight.getX()) + (bottomRight.getX() - bottomLeft.getX()) * (middlePoint.getY() - bottomRight.getY()));
-	float beta = ((bottomRight.getY() - middlePoint.getY()) * (x - bottomRight.getX()) + (middlePoint.getX() - bottomRight.getX()) * (y - bottomRight.getY())) / 
+	float beta = ((bottomRight.getY() - middlePoint.getY()) * (x - bottomRight.getX()) + (middlePoint.getX() - bottomRight.getX()) * (y - bottomRight.getY())) /
 		((bottomLeft.getY() - bottomRight.getY()) * (middlePoint.getX() - bottomRight.getX()) + (bottomRight.getX() - bottomLeft.getX()) * (middlePoint.getY() - bottomRight.getY()));
 	float gamma = 1.0f - alpha - beta;
 
@@ -196,9 +196,9 @@ public:
 		this->bottomLeft.setY(mouseY);
 		GLfloat x_coord = (this->topLeft.getX() - this->bottomLeft.getX()) * (this->topLeft.getX() - this->bottomLeft.getX());
 		GLfloat y_coord = (this->topLeft.getY() - this->bottomLeft.getY()) * (this->topLeft.getY() - this->bottomLeft.getY());
-		this->radius = sqrt(x_coord + y_coord)/2;
-		this->topRight.setX(topLeft.getX()+radius*2);
-		this->bottomRight.setX(topLeft.getX() + radius*2);
+		this->radius = sqrt(x_coord + y_coord) / 2;
+		this->topRight.setX(topLeft.getX() + radius * 2);
+		this->bottomRight.setX(topLeft.getX() + radius * 2);
 		this->bottomRight.setY(mouseY);
 	}
 	void toString() {
@@ -213,7 +213,7 @@ private:
 inline void myCircle::draw() {
 	glColor3f(this->r, this->g, this->b);
 	glPushMatrix();
-	glTranslatef(this->topLeft.getX()+radius, this->topLeft.getY()-radius, 0);
+	glTranslatef(this->topLeft.getX() + radius, this->topLeft.getY() - radius, 0);
 	if (this->fill) {
 		glBegin(GL_POLYGON);
 		for (int i = 0; i < 360; i++)
@@ -257,7 +257,7 @@ inline void myCircle::displayBorder(int listID) {
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(bottomLeft.getX(), bottomLeft.getY() , 0);
+	glTranslatef(bottomLeft.getX(), bottomLeft.getY(), 0);
 	glCallList(listID);
 	glPopMatrix();
 
@@ -320,11 +320,10 @@ public:
 	void setPoints(Points* topLeft, Points* topRight, Points* bottomLeft, Points* bottomRight) {
 		this->topLeft = *topLeft;
 		this->topRight = *topRight;
-		bottomLeft->setY(topLeft->getY()-18);
+		bottomLeft->setY(topLeft->getY() - 18);
 		this->bottomLeft = *bottomLeft;
 		bottomRight->setY(topLeft->getY() - 18);
 		this->bottomRight = *bottomRight;
-
 		this->size = (topRight->getX() - topLeft->getX()) / 12;
 	}
 	bool isInObj(GLfloat x, GLfloat y);
@@ -347,7 +346,7 @@ void myTexts::draw() {
 	int stride = 0;
 
 	for (char c : chars) {
-		glRasterPos2i(this->bottomLeft.getX() + stride+2, this->bottomLeft.getY()+6);
+		glRasterPos2i(this->bottomLeft.getX() + stride + 2, this->bottomLeft.getY() + 6);
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, c);
 		stride += 12;
 	}
@@ -361,7 +360,7 @@ inline bool myTexts::isInObj(GLfloat x, GLfloat y) {
 }
 
 inline void myTexts::addChar(char c) {
-	if(size-1>=chars.size())
+	if (size - 1 >= chars.size())
 		chars.push_back(c);
 }
 

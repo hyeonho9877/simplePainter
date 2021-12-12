@@ -14,7 +14,7 @@ public:
 	void setX(GLfloat x);
 	void setY(GLfloat y);
 	bool operator == (const Points c2) {
-		return x == c2.x && y==c2.y;
+		return x == c2.x && y == c2.y;
 	}
 private:
 	GLfloat x, y;

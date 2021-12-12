@@ -190,7 +190,7 @@ void mouse(int button, int state, int x, int y) {
 			} else {
 				texts->~myTexts();
 			}
-			
+
 			break;
 		}
 	}
@@ -267,7 +267,7 @@ void reshape(int w, int h) {
 
 void keyboard(unsigned char key, int x, int y) {
 	if (deleteTarget != 0) {
-		if(key == 127){
+		if (key == 127) {
 			for (vector<myShape*>::iterator it = objects.begin(); it != objects.end(); ++it) {
 				if (*it == deleteTarget) {
 					objects.erase(it);
@@ -275,10 +275,10 @@ void keyboard(unsigned char key, int x, int y) {
 				}
 			}
 		}
-		if ((key == 13 && deleteTarget->getType()==6) || keyAccepting) {
+		if ((key == 13 && deleteTarget->getType() == 6) || keyAccepting) {
 			for (myTexts* t : textObjs) {
 				if (deleteTarget == t) {
-					if(!keyAccepting){
+					if (!keyAccepting) {
 						keyAccepting = true;
 					} else {
 						t->addChar(key);
