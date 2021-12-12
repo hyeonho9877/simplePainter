@@ -199,7 +199,7 @@ void mouse(int button, int state, int x, int y) {
 }
 
 void display() {
-	glClearColor(1.0, 1.0, 1.0, 0.0);
+	glClearColor(0.9, 0.9, 0.9, 0.0);
 	if (clear)
 		glClear(GL_COLOR_BUFFER_BIT);
 
