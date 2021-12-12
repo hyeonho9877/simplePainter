@@ -287,9 +287,9 @@ private:
 };
 
 inline void myLines::draw() {
+	glColor3f(this->r, this->g, this->b);
 	glPointSize(this->size);
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glColor3f(this->r, this->g, this->b);
 	glVertexPointer(2, GL_FLOAT, 0, this->vertices.data());
 	glDrawArrays(GL_POINTS, 0, vertices.size());
 	glDisableClientState(GL_VERTEX_ARRAY);

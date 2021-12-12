@@ -41,6 +41,8 @@ void createBorderBoxList() {
 
 void motion(int x, int y) {
 	if (clickedLeft) {
+		if (deleteTarget != 0)
+			deleteTarget = 0;
 		if (inClick) {
 			inClick = false;
 		} else if (mode == 1 && (prevMouseX != x || prevMouseY != height - y) && stride++ % 2 == 0) {
@@ -199,23 +201,25 @@ void mouse(int button, int state, int x, int y) {
 
 void display() {
 	glClearColor(0.9, 0.9, 0.9, 0.0);
-	if (clear)
+	if (clear) {
+
 		glClear(GL_COLOR_BUFFER_BIT);
 
-	for (myShape* o : objects) {
-		if (o == deleteTarget) {
-			o->displayBorder(borderBoxID);
-			glColor3f(r, g, b);
+		for (myShape* o : objects) {
+			if (o == deleteTarget) {
+				o->displayBorder(borderBoxID);
+			}
+			o->draw();
 		}
-		o->draw();
-	}
-	for (myTexts* t : textObjs) {
-		if (t == deleteTarget) {
-			t->displayBorder(borderBoxID);
-			glColor3f(r, g, b);
+		for (myTexts* t : textObjs) {
+			if (t == deleteTarget) {
+				t->displayBorder(borderBoxID);
+			}
+			t->draw();
 		}
-		t->draw();
 	}
+
+	glColor3f(r, g, b);
 
 	switch (mode) {
 	case 1:
