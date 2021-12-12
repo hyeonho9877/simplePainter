@@ -44,6 +44,7 @@ void motion(int x, int y) {
 		if (inClick) {
 			inClick = false;
 		} else if (mode == 1 && (prevMouseX != x || prevMouseY != height - y) && stride++ % 2 == 0) {
+			cout << " line " << endl;
 			line->addPoint(x, height - y);
 			extended = true;
 		} else if (mode == 2 && (prevMouseX != -1 && prevMouseY != -1)) {
@@ -126,27 +127,7 @@ void mouse(int button, int state, int x, int y) {
 			texts = new myTexts();
 			break;
 		}
-		bool found = false;
-		for (auto o : objects) {
-			if (o->isInObj(x, height - y)) {
-				found = true;
-				deleteTarget = o;
-			}
-		}
-		for (auto t : textObjs) {
-			if (t->isInObj(x, height - y)) {
-				found = true;
-				deleteTarget = t;
-			}
-		}
-		if (!found) {
-			if (keyAccepting)
-				keyAccepting = false;
-			deleteTarget = 0;
-		}
-		clear = true;
-		glColor3f(r, g, b);
-		glutPostRedisplay();
+		
 	} else if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
 		clickedLeft = false;
 		prevMouseX = -1;
@@ -193,6 +174,27 @@ void mouse(int button, int state, int x, int y) {
 
 			break;
 		}
+		bool found = false;
+		for (auto o : objects) {
+			if (o->isInObj(x, height - y)) {
+				found = true;
+				deleteTarget = o;
+			}
+		}
+		for (auto t : textObjs) {
+			if (t->isInObj(x, height - y)) {
+				found = true;
+				deleteTarget = t;
+			}
+		}
+		if (!found) {
+			if (keyAccepting)
+				keyAccepting = false;
+			deleteTarget = 0;
+		}
+		clear = true;
+		glColor3f(r, g, b);
+		glutPostRedisplay();
 	}
 }
 
@@ -200,6 +202,21 @@ void display() {
 	glClearColor(1.0, 1.0, 1.0, 0.0);
 	if (clear)
 		glClear(GL_COLOR_BUFFER_BIT);
+
+	for (myShape* o : objects) {
+		if (o == deleteTarget) {
+			o->displayBorder(borderBoxID);
+			glColor3f(r, g, b);
+		}
+		o->draw();
+	}
+	for (myTexts* t : textObjs) {
+		if (t == deleteTarget) {
+			t->displayBorder(borderBoxID);
+			glColor3f(r, g, b);
+		}
+		t->draw();
+	}
 
 	switch (mode) {
 	case 1:
@@ -234,21 +251,6 @@ void display() {
 		}
 	default:
 		break;
-	}
-
-	for (myShape* o : objects) {
-		if (o == deleteTarget) {
-			o->displayBorder(borderBoxID);
-			glColor3f(r, g, b);
-		}
-		o->draw();
-	}
-	for (myTexts* t : textObjs) {
-		if (t == deleteTarget) {
-			t->displayBorder(borderBoxID);
-			glColor3f(r, g, b);
-		}
-		t->draw();
 	}
 
 	glFlush();
