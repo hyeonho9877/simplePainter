@@ -44,7 +44,6 @@ void motion(int x, int y) {
 		if (inClick) {
 			inClick = false;
 		} else if (mode == 1 && (prevMouseX != x || prevMouseY != height - y) && stride++ % 2 == 0) {
-			cout << " line " << endl;
 			line->addPoint(x, height - y);
 			extended = true;
 		} else if (mode == 2 && (prevMouseX != -1 && prevMouseY != -1)) {
